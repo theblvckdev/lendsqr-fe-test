@@ -8,10 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        secondary: "#213F7D",
+        primary: "#39CDCC",
+        accent: "#545F7D",
+      },
+      fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
+      },
+      boxShadow: {
+        spread:
+          "0 4px 100px rgba(117, 117, 117, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)",
       },
     },
   },
