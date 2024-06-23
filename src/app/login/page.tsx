@@ -24,11 +24,11 @@ const LoginPage = () => {
   return (
     <>
       <main className="h-screen w-full lg:overflow-hidden bg-white">
-        <div className="flex lg:flex-row flex-col h-full">
-          <div className="basis-1/2 lg:block hidden h-screen relative">
-            <div className="absolute w-fit top-20 left-16">
-              <Logo />
-            </div>
+        <div className="flex lg:flex-row flex-col h-full relative">
+          <div className="absolute w-fit lg:top-20 top-8 md:left-24 left-3">
+            <Logo height={150} width={150} />
+          </div>
+          <div className="basis-1/2 lg:block hidden h-screen">
             <div className="px-16 py-20 h-full grid place-items-center">
               <Image
                 src={"/svg/pablo-sign-in-illustration.svg"}
@@ -41,7 +41,7 @@ const LoginPage = () => {
           <div className="basis-1/2 h-full lg:shadow-spread">
             <div className="lg:pl-20 xl:pr-36 lg:pr-20 md:pr-24 md:pl-24 pr-3 pl-3 py-20 lg:h-full h-screen flex items-center lg:justify-normal justify-center">
               <div className="w-full">
-                <h1 className="font-montserrat text-4xl font-bold text-secondary">
+                <h1 className="font-primary text-4xl font-bold text-secondary">
                   Welcome!
                 </h1>
                 <div className="text-accent mt-2 text-lg font-light">
@@ -71,7 +71,7 @@ const LoginPage = () => {
                   <div>
                     <Link
                       href={"/forget-password"}
-                      className="no-underline outline-none text-primary font-montserrat text-sm uppercase"
+                      className="no-underline outline-none text-primary font-primary text-sm uppercase"
                     >
                       Forgot password?
                     </Link>

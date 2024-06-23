@@ -26,7 +26,7 @@ const FormInput = ({
         <div
           className={`flex py-2.5 px-3 duration-200 ease-in items-center bg-white ring-2 overflow-hidden ${
             focused ? "ring-primary" : "ring-gray-200"
-          } rounded text-gray-400 font-montserrat`}
+          } rounded text-gray-400 font-primary`}
         >
           <input
             type={showPassword ? "text" : "password"}
@@ -36,7 +36,7 @@ const FormInput = ({
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
             required={required}
-            className="w-full box-border outline-none border-0"
+            className="w-full box-border outline-none text-sm border-0"
           />
 
           <div
@@ -53,7 +53,7 @@ const FormInput = ({
           onChange={onChange}
           placeholder={placeholder}
           required={required}
-          className="py-2.5 px-3 bg-white ring-2 outline-none ring-gray-200 w-full box-border focus:ring-primary duration-200 ease-in rounded text-gray-400 font-montserrat"
+          className="py-2.5 px-3 bg-white ring-2 text-sm outline-none ring-gray-200 w-full box-border focus:ring-primary duration-200 ease-in rounded text-gray-400 font-primary"
         />
       )}
     </>

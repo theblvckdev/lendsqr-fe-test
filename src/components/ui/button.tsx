@@ -19,7 +19,7 @@ const Button = ({
     <>
       <button
         onClick={() => (loading ? null : onClick)}
-        className={`outline-none p-2.5 text-center text-sm ${textColor} font-montserrat uppercase rounded-md ${buttonVariant} ${
+        className={`outline-none p-3 text-center text-sm duration-200 ease-in ${textColor} font-primary uppercase rounded-md ${buttonVariant} ${
           loading
             ? "opacity-60 cursor-not-allowed"
             : "opacity-100 cursor-pointer"
@@ -35,7 +35,7 @@ const Button = ({
                 Loading...
               </span>
             </div>
-            <div className={`${textColor} capitalize font-montserrat text-sm`}>
+            <div className={`${textColor} capitalize font-primary text-sm`}>
               Processing...
             </div>
           </div>

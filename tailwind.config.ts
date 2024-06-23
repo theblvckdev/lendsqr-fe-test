@@ -14,11 +14,11 @@ const config: Config = {
         accent: "#545F7D",
       },
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
+        primary: ["Montserrat", "sans-serif"],
       },
       boxShadow: {
         spread:
-          "0 4px 100px rgba(117, 117, 117, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)",
+          "0 4px 100px rgba(145, 143, 143, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)",
       },
     },
   },
