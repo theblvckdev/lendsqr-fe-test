@@ -44,12 +44,12 @@ const LoginPage = () => {
                 <h1 className="font-primary text-4xl font-bold text-secondary">
                   Welcome!
                 </h1>
-                <div className="text-accent mt-2 text-lg font-light">
+                <div className="text-accent mt-2 text-lg font-primary font-light">
                   Enter details to login.
                 </div>
 
                 <form
-                  onSubmit={handleLogin}
+                  onSubmit={() => (loading ? null : handleLogin)}
                   className="mt-10 flex flex-col space-y-6"
                 >
                   <FormInput
@@ -70,7 +70,7 @@ const LoginPage = () => {
 
                   <div>
                     <Link
-                      href={"/forget-password"}
+                      href={"/login"}
                       className="no-underline outline-none text-primary font-primary text-sm uppercase"
                     >
                       Forgot password?
