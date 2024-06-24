@@ -14,7 +14,7 @@ const config: Config = {
         accent: "#545F7D",
       },
       fontFamily: {
-        primary: ["Montserrat", "sans-serif"],
+        primary: ["Rubik", "sans-serif"],
       },
       boxShadow: {
         spread:
