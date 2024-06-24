@@ -14,7 +14,7 @@ const AchivementCard = ({ amount, icon, title }: AchivementCardPropsType) => {
         <div className="text-sm uppercase text-secondary font-primary">
           {title}
         </div>
-        <h3 className="text-3xl text-secondary font-semibold font-primary">
+        <h3 className="text-2xl text-secondary font-semibold font-primary">
           {amount.toLocaleString()}
         </h3>
       </div>
