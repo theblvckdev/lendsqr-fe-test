@@ -72,10 +72,10 @@ const Sidebar = () => {
                         <Link
                           href={path}
                           key={index}
-                          className={`w-full block outline-none py-2 px-5 hover:bg-primary hover:bg-opacity-10 text-secondary border-l-4 opacity-60 hover:opacity-100 duration-200 ease-in hover:border-l-primary ${
+                          className={`w-full block outline-none py-2 px-5 hover:bg-primary hover:bg-opacity-10 text-secondary border-l-4 hover:opacity-100 duration-200 ease-in hover:border-l-primary ${
                             data.isActive
-                              ? "border-l-primary bg-opacity-10 bg-primary"
-                              : "bg-transparent border-l-transparent"
+                              ? "border-l-primary bg-opacity-10 opacity-100 bg-primary"
+                              : "bg-transparent border-l-transparent opacity-60"
                           }`}
                         >
                           <div className="flex gap-3 items-center">
