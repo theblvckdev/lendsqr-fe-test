@@ -1,7 +1,10 @@
+"use client";
+
 import React, { ReactElement } from "react";
 import Logo from "./ui/logo";
 import {
   IoLogOutOutline,
+  IoMenuOutline,
   IoNotificationsOutline,
   IoPersonOutline,
   IoSearchOutline,
@@ -11,7 +14,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GoTriangleDown } from "react-icons/go";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
-import path from "path";
+import { useSidebar } from "@/hooks/useSidebar";
 
 interface ProfileAvatarDropdownDataType {
   path: string;
@@ -40,18 +43,26 @@ const profileAvatarDropdownData: ProfileAvatarDropdownDataType[] = [
 ];
 
 const Navbar = () => {
+  const { toggleSidebar } = useSidebar();
+
   return (
     <>
-      <nav className="bg-white shadow py-4 z-50 fixed top-0 left-0 right-0 w-full">
+      <nav className="bg-white shadow py-4 z-50 fixed top-0 left-0 right-0 w-full xl:px-0 md:px-5 px-3">
         <div className="max-w-7xl mx-auto flex items-center">
+          <button
+            onClick={toggleSidebar}
+            className="outline-none lg:hidden block mr-5"
+          >
+            <IoMenuOutline className="text-3xl" />
+          </button>
           <div className="mr-auto">
             <div className="flex items-center">
               <Logo width={130} height={130} />
 
-              <form className="flex ml-36">
+              <form className="lg:flex xl:ml-36 lg:ml-24 hidden ml-0">
                 <input
                   type="text"
-                  className="py-2 px-5 bg-white ring-1 ring-gray-200 rounded-l-lg outline-none box-border w-[350px] text-sm duration-200 font-primary ease-in focus:ring-primary text-gray-400"
+                  className="py-2 px-5 bg-white ring-1 ring-gray-200 rounded-l-lg outline-none box-border w-[350px] text-sm duration-200 font-secondary ease-in focus:ring-primary text-gray-400"
                   placeholder="Search for anything"
                 />
                 <button className="py-2.5 px-4 bg-primary ring-1 outline-none ring-primary text-white rounded-r-lg">
@@ -61,10 +72,10 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="flex gap-7 items-center">
+          <div className="flex lg:gap-7 md:gap-5 gap-3 items-center">
             <Link
               href={"/"}
-              className="font-primary text-secondary underline outline-none text-sm"
+              className="font-secondary text-secondary underline outline-none text-sm"
             >
               Docs
             </Link>
@@ -76,15 +87,15 @@ const Navbar = () => {
 
               <PopoverPanel
                 transition
-                className="absolute left-1/2 z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+                className="absolute md:left-1/2 -left-[80px] z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
               >
                 <div className="w-screen max-w-[300px] flex-auto overflow-hidden rounded-md bg-white text-sm leading-6 shadow ring-1 ring-gray-200">
-                  <div className="p-3 border-b border-b-gray-200 font-primary text-sm text-secondary">
+                  <div className="p-3 border-b border-b-gray-200 font-secondary text-sm text-secondary">
                     Notifications
                   </div>
 
                   <div className="h-[300px] flex items-center justify-center">
-                    <h3 className="text-sm font-primary text-gray-400">
+                    <h3 className="text-sm font-secondary text-gray-400">
                       No notifications
                     </h3>
                   </div>
@@ -104,8 +115,8 @@ const Navbar = () => {
                   />
                 </div>
 
-                <div className="flex gap-2 items-center text-secondary ">
-                  <div className="font-primary text-sm">Nathaniel</div>
+                <div className="md:flex gap-2 items-center text-secondary hidden">
+                  <div className="font-secondary text-sm">Nathaniel</div>
 
                   <GoTriangleDown />
                 </div>
@@ -113,7 +124,7 @@ const Navbar = () => {
 
               <PopoverPanel
                 transition
-                className="absolute left-1/2 z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+                className="absolute xl:left-1/2 md:left-1/3 -left-[58px] z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
               >
                 <div className="w-screen max-w-[200px] flex-auto overflow-hidden rounded-md bg-white text-sm leading-6 shadow ring-1 ring-gray-200">
                   <div>
@@ -123,7 +134,7 @@ const Navbar = () => {
                       return (
                         <Link
                           href={path}
-                          className="outline-none w-full py-2 px-4 text-gray-400 duration-200 ease-in hover:bg-gray-50 font-primary flex items-center gap-3"
+                          className="outline-none w-full py-2 px-4 text-gray-400 duration-200 ease-in hover:bg-gray-50 font-secondary flex items-center gap-3"
                           key={index}
                         >
                           {icon}
