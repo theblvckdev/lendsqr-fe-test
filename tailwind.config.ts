@@ -15,6 +15,7 @@ const config: Config = {
       },
       fontFamily: {
         primary: ["Rubik", "sans-serif"],
+        secondary: ["Work Sans", "sans-serif"],
       },
       boxShadow: {
         spread:
