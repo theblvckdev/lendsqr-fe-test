@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
 import AchivementCard from "@/components/ui/achivement_cards";
+import UserDataTable from "@/components/ui/user_data_table";
 import { achivementData } from "@/data/achivement_data";
 import React from "react";
 
@@ -30,6 +31,10 @@ const Home = () => {
                 );
               })}
             </div>
+          </div>
+
+          <div className="mt-5">
+            <UserDataTable />
           </div>
         </section>
       </main>
