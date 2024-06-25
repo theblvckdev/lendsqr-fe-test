@@ -47,7 +47,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white shadow py-4 z-50 fixed top-0 left-0 right-0 w-full xl:px-0 md:px-5 px-3">
+      <nav className="bg-white shadow py-4 z-50 fixed top-0 left-0 right-0 w-full xl:px-2 md:px-5 px-3">
         <div className="max-w-7xl mx-auto flex items-center">
           <button
             onClick={toggleSidebar}
@@ -95,7 +95,7 @@ const Navbar = () => {
                   </div>
 
                   <div className="h-[300px] flex items-center justify-center">
-                    <h3 className="text-sm font-secondary text-gray-400">
+                    <h3 className="text-sm font-secondary text-accent">
                       No notifications
                     </h3>
                   </div>
@@ -134,7 +134,7 @@ const Navbar = () => {
                       return (
                         <Link
                           href={path}
-                          className="outline-none w-full py-2 px-4 text-gray-400 duration-200 ease-in hover:bg-gray-50 font-secondary flex items-center gap-3"
+                          className="outline-none w-full py-2 px-4 text-accent duration-200 ease-in hover:bg-gray-50 font-secondary flex items-center gap-3"
                           key={index}
                         >
                           {icon}

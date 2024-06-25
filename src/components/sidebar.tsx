@@ -13,8 +13,8 @@ const Sidebar = () => {
   return (
     <>
       <aside
-        className={`fixed xl:w-[20%] lg:w-[25%] md:w-[33%] w-[65%] lg:duration-0 duration-200 ease-in z-40 bg-white shadow h-screen xl:left-0 lg:left-0 ${
-          isSidebarOpen ? "left-0" : "md:-left-[33%] -left-[63%]"
+        className={`fixed xl:w-[20%] lg:w-[25%] md:w-[33%] w-[70%] lg:duration-0 duration-200 ease-in z-40 bg-white shadow h-screen xl:left-0 lg:left-0 ${
+          isSidebarOpen ? "left-0" : "md:-left-[33%] -left-[70%]"
         } top-0 py-16 overflow-y-auto sidebar`}
       >
         <div className="h-full py-8">
