@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
+import { SidebarProvider } from "@/contexts/sidebar_context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,15 +16,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="shortcut icon"
-          href="/images/favicon.png"
-          type="image/x-icon"
-        />
-      </head>
-      <body className={inter.className}>{children}</body>
-    </html>
+    <SidebarProvider>
+      <html lang="en">
+        <head>
+          <link
+            rel="shortcut icon"
+            href="/images/favicon.png"
+            type="image/x-icon"
+          />
+        </head>
+        <body className={inter.className}>{children}</body>
+      </html>
+    </SidebarProvider>
   );
 }
