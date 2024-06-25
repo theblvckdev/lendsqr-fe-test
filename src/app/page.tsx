@@ -11,13 +11,13 @@ const Home = () => {
         <Navbar />
         <Sidebar />
 
-        <section className="ml-[20%] w-[80] py-24 p-10">
-          <h3 className="text-secondary text-2xl font-semibold font-primary">
+        <section className="xl:ml-[20%] lg:ml-[25%] xl:w-[80%] lg:w-[75%] xl:py-24 md:py-[100px] py-24 xl:p-10 md:p-5 p-3">
+          <h3 className="text-secondary text-2xl font-semibold font-secondary">
             Users
           </h3>
 
-          <div className="mt-8">
-            <div className="grid grid-cols-4 gap-7">
+          <div className="mt-5">
+            <div className="grid md:grid-cols-4 grid-cols-2 xl:gap-7 md:gap-5 gap-3">
               {achivementData.map((data, index) => {
                 const { amount, icon, title } = data;
                 return (
