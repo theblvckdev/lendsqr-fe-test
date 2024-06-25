@@ -1,18 +1,22 @@
 "use client";
 
 import { sidebarMenuData } from "@/data/sidebarmenu_data";
+import { useSidebar } from "@/hooks/useSidebar";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React from "react";
 import { IoChevronDownOutline } from "react-icons/io5";
 
 const Sidebar = () => {
-  const location = usePathname();
+  const { isSidebarOpen } = useSidebar();
 
   return (
     <>
-      <aside className="fixed w-[20%] z-40 bg-white shadow h-screen left-0 top-0 py-16 overflow-y-auto sidebar">
+      <aside
+        className={`fixed xl:w-[20%] lg:w-[25%] md:w-[33%] w-[65%] lg:duration-0 duration-200 ease-in z-40 bg-white shadow h-screen xl:left-0 lg:left-0 ${
+          isSidebarOpen ? "left-0" : "md:-left-[33%] -left-[63%]"
+        } top-0 py-16 overflow-y-auto sidebar`}
+      >
         <div className="h-full py-8">
           <div>
             <button className="w-full outline-none py-2 px-5 flex items-center gap-3 hover:bg-primary hover:bg-opacity-5 text-secondary border-l-4 border-l-transparent duration-200 ease-in hover:border-l-primary">
@@ -24,7 +28,9 @@ const Sidebar = () => {
                   height={18}
                 />
 
-                <div className="font-primary text-sm">Switch Organization</div>
+                <div className="font-secondary text-sm">
+                  Switch Organization
+                </div>
               </div>
 
               <div>
@@ -44,7 +50,7 @@ const Sidebar = () => {
                     height={20}
                   />
 
-                  <div className="font-primary text-sm">Dashboard</div>
+                  <div className="font-secondary text-sm">Dashboard</div>
                 </div>
               </button>
             </div>
@@ -56,7 +62,7 @@ const Sidebar = () => {
 
               return (
                 <div key={index}>
-                  <div className="py-2 px-5 text-secondary text-sm font-semibold font-primary uppercase">
+                  <div className="py-2 px-5 text-secondary text-[12px] font-semibold font-secondary uppercase">
                     {category}
                   </div>
 
@@ -81,7 +87,9 @@ const Sidebar = () => {
                           <div className="flex gap-3 items-center">
                             {icon}
 
-                            <div className="font-primary text-sm">{title}</div>
+                            <div className="font-secondary text-sm">
+                              {title}
+                            </div>
                           </div>
                         </Link>
                       );
