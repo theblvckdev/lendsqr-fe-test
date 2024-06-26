@@ -8,11 +8,11 @@ import React from "react";
 const Home = () => {
   return (
     <>
-      <main className="bg-gray-50 h-full min-h-screen">
+      <main className="h-full min-h-screen">
         <Navbar />
         <Sidebar />
 
-        <section className="xl:ml-[20%] lg:ml-[25%] xl:w-[80%] lg:w-[75%] xl:py-24 md:py-[100px] py-24 xl:p-10 md:p-5 p-3">
+        <section className="xl:ml-[20%] lg:ml-[25%] xl:w-[80%] lg:w-[75%] xl:pt-24 md:pt-[100px] pt-24 xl:p-10 md:p-5 p-3">
           <h3 className="text-secondary text-2xl font-semibold font-secondary">
             Users
           </h3>
