@@ -8,14 +8,15 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { FiUserCheck, FiUserX } from "react-icons/fi";
 import { IoEyeOutline } from "react-icons/io5";
 import { MdFilterList } from "react-icons/md";
+import UserLoaingSkeleton from "./user_data_loading_sekeleton";
 
 const tableHeadData: string[] = [
-  "Organization",
-  "Username",
-  "Email",
-  "Phone Number",
-  "Date Joined",
-  "Status",
+  "organization",
+  "username",
+  "email",
+  "phone number",
+  "date joined",
+  "status",
 ];
 
 interface UserMenuTypes {
@@ -30,7 +31,8 @@ interface UserDataTypes {
   id: string;
   organization: string;
   phone_number: string;
-  status: string;
+  status: boolean;
+  blacklisted: boolean;
   username: string;
 }
 
@@ -55,16 +57,20 @@ const userDataTableMenu: UserMenuTypes[] = [
 
 const UserDataTable = () => {
   const [users, setUsers] = useState<UserDataTypes[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getUsersData: () => Promise<void> = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(
           "https://667b427dbd627f0dcc9220cf.mockapi.io/api/users/users_data"
         );
 
+        setLoading(false);
         setUsers(response.data);
       } catch (err) {
+        setLoading(false);
         console.log(err);
       }
     };
@@ -73,31 +79,44 @@ const UserDataTable = () => {
   }, []);
 
   return (
-    <div className="w-full h-full">
-      <div className="bg-white shadow-spread p-4 rounded overflow-y-hidden xl:overflow-x-hidden overflow-x-auto">
-        <table className="xl:w-full lg:w-screen md:w-[120vw] w-[230vw]">
-          <thead>
-            <tr>
-              {tableHeadData.map((data, index) => {
-                return (
-                  <th
-                    key={index}
-                    className="py-2 font-secondary text-[12px] text-left font-semibold text-accent uppercase"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div>{data}</div>
-                      <button className="outline-none">
-                        <MdFilterList className="text-lg" />
-                      </button>
-                    </div>
-                  </th>
-                );
-              })}
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((data, index) => {
+    <div className="bg-white shadow-spread p-4 rounded xl:overflow-visible overflow-x-auto overflow-y-hidden w-full">
+      <table className="xl:w-full lg:w-screen md:w-[120vw] w-[230vw]">
+        <thead>
+          <tr>
+            {tableHeadData.map((data, index) => {
+              return (
+                <th
+                  key={index}
+                  className="py-2 font-secondary text-[12px] w-fit text-left font-semibold text-accent uppercase"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="truncate">{data}</div>
+                    <button className="outline-none">
+                      <MdFilterList className="text-lg" />
+                    </button>
+                  </div>
+                </th>
+              );
+            })}
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {loading ? (
+            <>
+              <UserLoaingSkeleton />
+              <UserLoaingSkeleton />
+              <UserLoaingSkeleton />
+              <UserLoaingSkeleton />
+              <UserLoaingSkeleton />
+              <UserLoaingSkeleton />
+              <UserLoaingSkeleton />
+              <UserLoaingSkeleton />
+              <UserLoaingSkeleton />
+              <UserLoaingSkeleton />
+            </>
+          ) : (
+            users.slice(0, 10).map((data, index) => {
               const {
                 createdAt,
                 email,
@@ -106,6 +125,7 @@ const UserDataTable = () => {
                 phone_number,
                 username,
                 status,
+                blacklisted,
               } = data;
 
               // The ISO 8601 date string
@@ -174,7 +194,11 @@ const UserDataTable = () => {
                     className="text-[12px] font-secondary text-gray-400 py-2
                   "
                   >
-                    {status ? (
+                    {blacklisted ? (
+                      <div className="py-1 px-2 rounded-full text-center bg-red-50 text-red-400">
+                        Blacklisted
+                      </div>
+                    ) : status ? (
                       <div className="py-1 px-2 rounded-full text-center bg-lime-100 text-lime-500">
                         Active
                       </div>
@@ -194,7 +218,7 @@ const UserDataTable = () => {
                         transition
                         className="absolute xl:-left-[45px] md:left-1/3 -left-[58px] z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
                       >
-                        <div className="w-screen max-w-[200px] flex-auto overflow-hidden rounded-md bg-white text-sm leading-6 shadow ring-1 ring-gray-200">
+                        <div className="w-screen max-w-[150px] flex-auto overflow-hidden rounded-md bg-white text-[12px] leading-6 shadow ring-1 ring-gray-200">
                           <div>
                             {userDataTableMenu.map((data, index) => {
                               const { icon, title } = data;
@@ -217,10 +241,10 @@ const UserDataTable = () => {
                   </td>
                 </tr>
               );
-            })}
-          </tbody>
-        </table>
-      </div>
+            })
+          )}
+        </tbody>
+      </table>
     </div>
   );
 };
