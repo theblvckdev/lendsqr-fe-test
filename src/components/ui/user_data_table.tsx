@@ -89,11 +89,17 @@ const UserDataTable = () => {
                 return (
                   <th
                     key={index}
-                    className="py-2 font-secondary text-[12px] w-fit text-left font-semibold text-accent uppercase"
+                    className={`py-2 font-secondary text-[12px] w-fit text-left font-semibold text-accent uppercase ${
+                      data === "date joined" ? "md:table-cell hidden" : null
+                    }`}
                   >
                     <div className="flex items-center gap-3">
                       <div className="truncate">{data}</div>
-                      <button className="outline-none">
+                      <button
+                        className={`outline-none ${
+                          data === "date joined" ? "md:table-cell hidden" : null
+                        }`}
+                      >
                         <MdFilterList className="text-lg" />
                       </button>
                     </div>
@@ -189,10 +195,10 @@ const UserDataTable = () => {
                     <td className="text-[12px] font-secondary text-gray-400 py-2">
                       {email}
                     </td>
-                    <td className="text-[12px] font-secondary text-gray-400 py-2">
+                    <td className="text-[12px] font-secondary text-gray-400 py-2 text-center">
                       {phone_number}
                     </td>
-                    <td className="text-[12px] font-secondary text-gray-400 py-2">
+                    <td className="text-[12px] font-secondary text-gray-400 py-2 md:table-cell hidden">
                       {readableDate}
                     </td>
                     <td
@@ -253,10 +259,10 @@ const UserDataTable = () => {
       </div>
 
       <div className="mt-3">
-        <div className="flex md:flex-row flex-col-reverse md:gap-y-0 gap-y-3 items-center">
-          <div className="md:mr-auto md:mx-0 mx-auto">
+        <div className="flex flex-row md:gap-y-0 gap-y-3 items-center">
+          <div className="md:mr-auto mr-auto">
             <div className="flex gap-2 items-center">
-              <div className="text-[13px] text-accent font-primary">
+              <div className="text-[13px] text-accent font-primary md:block hidden">
                 Showing
               </div>
 
@@ -277,7 +283,7 @@ const UserDataTable = () => {
           </div>
 
           <div>
-            <div className="flex gap-4 items-center">
+            <div className="flex md:gap-4 gap-2 items-center">
               <button className="bg-secondary p-1.5 rounded-md text-secondary font-primary bg-opacity-10 outline-none">
                 <IoChevronBack />
               </button>
