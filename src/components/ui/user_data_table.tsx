@@ -195,7 +195,7 @@ const UserDataTable = () => {
                     <td className="text-[12px] font-secondary text-gray-400 py-2">
                       {email}
                     </td>
-                    <td className="text-[12px] font-secondary text-gray-400 py-2 text-center">
+                    <td className="text-[12px] font-secondary text-gray-400 py-2 md:text-left text-center">
                       {phone_number}
                     </td>
                     <td className="text-[12px] font-secondary text-gray-400 py-2 md:table-cell hidden">
