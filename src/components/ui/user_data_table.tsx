@@ -56,23 +56,25 @@ const userDataTableMenu: UserMenuTypes[] = [
   },
 ];
 
+const paginationNumberArray: number[] = [1, 2, 3, 4, 5];
+
 const UserDataTable = () => {
   const [users, setUsers] = useState<UserDataTypes[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getUsersData: () => Promise<void> = async () => {
-      setLoading(true);
+      // setLoading(true);
       try {
         const response = await axios.get(
           "https://667b427dbd627f0dcc9220cf.mockapi.io/api/users/users_data"
         );
 
-        setLoading(false);
         setUsers(response.data);
       } catch (err) {
-        setLoading(false);
         console.log(err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -283,34 +285,21 @@ const UserDataTable = () => {
           </div>
 
           <div>
-            <div className="flex md:gap-4 gap-2 items-center">
+            <div className="flex md:gap-5 gap-2 items-center">
               <button className="bg-secondary p-1.5 rounded-md text-secondary font-primary bg-opacity-10 outline-none">
                 <IoChevronBack />
               </button>
 
-              <button className="bg-transparent text-[13px] rounded-md text-accent font-primary bg-opacity-10 outline-none">
-                1
-              </button>
-
-              <button className="bg-transparent text-[13px] rounded-md text-accent font-primary bg-opacity-10 outline-none">
-                2
-              </button>
-
-              <button className="bg-transparent text-[13px] rounded-md text-accent font-primary bg-opacity-10 outline-none">
-                3
-              </button>
-
-              <button className="bg-transparent text-[13px] rounded-md text-accent font-primary bg-opacity-10 outline-none">
-                ...
-              </button>
-
-              <button className="bg-transparent text-[13px] rounded-md text-accent font-primary bg-opacity-10 outline-none">
-                15
-              </button>
-
-              <button className="bg-transparent text-[13px] rounded-md text-accent font-primary bg-opacity-10 outline-none">
-                16
-              </button>
+              {paginationNumberArray.map((data, index) => {
+                return (
+                  <button
+                    key={index}
+                    className="bg-transparent text-[13px] rounded-md text-accent font-primary bg-opacity-10 outline-none"
+                  >
+                    {data}
+                  </button>
+                );
+              })}
 
               <button className="bg-secondary p-1.5 rounded-md text-secondary font-primary bg-opacity-10 outline-none">
                 <IoChevronForward />
